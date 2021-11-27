@@ -8,7 +8,7 @@ namespace JAPI.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public int Name { get; set; }
+        public string Name { get; set; }
         [Required]
         public int State { get; set; }
         public DateTime Created { get; set; }

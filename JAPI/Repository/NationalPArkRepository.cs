@@ -1,49 +1,59 @@
-﻿using JAPI.Models;
+﻿using JAPI.Data;
+using JAPI.Models;
 using JAPI.Repository.IRepository;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace JAPI.Repository
 {
     public class NationalParkRepository : INationalParkRepository
     {
+        private readonly ApplicationDbContext _db;
+        public NationalParkRepository(ApplicationDbContext db)
+        {
+            _db = db;
+        }
         public bool CreateNationalPark(NationalPark nationalPark)
         {
-            throw new System.NotImplementedException();
+            _db.NationalParks.Add(nationalPark);
+            return Save();
         }
 
         public bool DeleteNationalPark(NationalPark nationalPark)
         {
-            throw new System.NotImplementedException();
+            _db.NationalParks.Remove(nationalPark);
+            return Save();
         }
 
         public NationalPark GetNationalPark(int naionalParkId)
         {
-            throw new System.NotImplementedException();
+            return _db.NationalParks.FirstOrDefault(a => a.Id == naionalParkId);
         }
 
         public ICollection<NationalPark> GetNationalParks()
         {
-            throw new System.NotImplementedException();
+            return _db.NationalParks.OrderBy(a => a.Name).ToList();
         }
 
         public bool NationalParkExists(string name)
         {
-            throw new System.NotImplementedException();
+            return _db.NationalParks.Any(a => a.Name.ToLower().Trim() == name.ToLower().Trim());
         }
 
         public bool NationalParkExists(int id)
         {
-            throw new System.NotImplementedException();
+            return _db.NationalParks.Any(a => a.Id == id);
         }
 
         public bool Save()
         {
-            throw new System.NotImplementedException();
+            return _db.SaveChanges() > 0 ? true : false;
         }
 
         public bool UpdateNationalPark(NationalPark nationalPark)
         {
-            throw new System.NotImplementedException();
+            _db.NationalParks.Update(nationalPark);
+            return Save();
         }
     }
 }
