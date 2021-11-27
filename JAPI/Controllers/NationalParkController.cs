@@ -64,5 +64,20 @@ namespace JAPI.Controllers
             }
             return CreatedAtRoute("GetNationalPark", new { id = nationalParkObj.Id }, nationalParkObj);
         }
+        [HttpPatch("{id:int}", Name = "UpdateNationalPark")]
+        public IActionResult UpdateNationalPark(int id, [FromBody] NationalParkDto nationalParkDto)
+        {
+            if (nationalParkDto == null || id!=nationalParkDto.Id)
+            {
+                return BadRequest(ModelState);
+            }
+            var nationalParkObj = _mapper.Map<NationalPark>(nationalParkDto);
+            if (!_npRepo.UpdateNationalPark(nationalParkObj))
+            {
+                ModelState.AddModelError("", $"Something went wrong when updating the record {nationalParkObj.Name}");
+                return StatusCode(500, ModelState);
+            }
+            return NoContent();
+        }
     }
 }
