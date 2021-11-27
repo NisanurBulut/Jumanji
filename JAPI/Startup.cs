@@ -39,22 +39,24 @@ namespace JAPI
             services.AddAutoMapper(typeof(JumanjiMappings));
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("JumnajiOpenAPISpec", new Microsoft.OpenApi.Models.OpenApiInfo()
-                {
-                    Title = "Jumanji API",
-                    Version = "v1.0",
-                    Description = "Jumanji API",
-                    Contact = new Microsoft.OpenApi.Models.OpenApiContact({
-                        Name = "Nisanur Bulut",
-                        Email = "nisanurrunasin@gmail.com",
-                        Url = new Uri("https://github.com/NisanurBulut")
-                    },
-                    License= new Microsoft.OpenApi.Models.OpenApiLicense()
+                options.SwaggerDoc("JumnajiOpenAPISpec",
+                    new Microsoft.OpenApi.Models.OpenApiInfo()
                     {
-                        Name = "MIT License",
-                        Url = new Uri("https://opensource.org/licenses/MIT")
-                    }
-                });
+                        Title = "Jumanji API",
+                        Version = "v1.0",
+                        Description = "Jumanji API",
+                        Contact = new Microsoft.OpenApi.Models.OpenApiContact()
+                        {
+                            Name = "Nisanur Bulut",
+                            Email = "nisanurrunasin@gmail.com",
+                            Url = new Uri("https://github.com/NisanurBulut")
+                        },
+                        License = new Microsoft.OpenApi.Models.OpenApiLicense()
+                        {
+                            Name = "MIT License",
+                            Url = new Uri("https://opensource.org/licenses/MIT")
+                        }
+                    });
 
                 var xmlCommentFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var cmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentFile);
