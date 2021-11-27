@@ -35,6 +35,14 @@ namespace JAPI
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<INationalParkRepository, NationalParkRepository>();
             services.AddAutoMapper(typeof(JumanjiMappings));
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("JumnajiOpenAPISpec", new Microsoft.OpenApi.Models.OpenApiInfo()
+                {
+                    Title = "Jumanji API",
+                    Version = "v1.0"
+                });
+            });
             services.AddControllers();
         }
 
@@ -47,7 +55,7 @@ namespace JAPI
             }
 
             app.UseHttpsRedirection();
-
+            app.UseSwagger();
             app.UseRouting();
 
             app.UseAuthorization();
