@@ -31,8 +31,13 @@ namespace JAPI.Controllers
         [HttpGet]
         public IActionResult GetNationalPark(int id)
         {
-            var objList = _npRepo.GetNationalPark(id);
-            return Ok(objList);
+            var obj = _npRepo.GetNationalPark(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(_mapper.Map<NationalParkDto>(obj));
         }
 
     }
