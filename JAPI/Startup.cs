@@ -16,6 +16,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using JAPI.JumanjiMapper;
+using System.Reflection;
+using System.IO;
 
 namespace JAPI
 {
@@ -42,6 +44,10 @@ namespace JAPI
                     Title = "Jumanji API",
                     Version = "v1.0"
                 });
+
+                var xmlCommentFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var cmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentFile);
+                options.IncludeXmlComments(cmlCommentsFullPath);
             });
             services.AddControllers();
         }
