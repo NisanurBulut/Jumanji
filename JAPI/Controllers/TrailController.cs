@@ -52,7 +52,7 @@ namespace JAPI.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult CreateTrail([FromBody] TrailUpsertDto trailDto)
+        public IActionResult CreateTrail([FromBody] TrailCreateDto trailDto)
         {
             if (trailDto == null)
             {
@@ -79,7 +79,7 @@ namespace JAPI.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult UpdateTrail(int id, [FromBody] TrailUpsertDto trailDto)
+        public IActionResult UpdateTrail(int id, [FromBody] TrailUpdateDto trailDto)
         {
             if (trailDto == null || id!=trailDto.Id)
             {

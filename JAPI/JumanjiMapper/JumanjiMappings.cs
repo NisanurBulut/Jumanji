@@ -11,7 +11,7 @@ namespace JAPI.JumanjiMapper
         {
             CreateMap<NationalPark, NationalParkDto>().ReverseMap();
             CreateMap<Trail, TrailDto>().ReverseMap();
-            CreateMap<Trail, TrailUpsertDto>().ReverseMap();
+            CreateMap<Trail, TrailUpdateDto>().ReverseMap();
         }
     }
 }

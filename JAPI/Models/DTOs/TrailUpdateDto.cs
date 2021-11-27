@@ -5,7 +5,7 @@ using static JAPI.Models.Trail;
 
 namespace JAPI.Models.DTOs
 {
-    public class TrailUpsertDto
+    public class TrailUpdateDto
     {
         
         public int Id { get; set; }
