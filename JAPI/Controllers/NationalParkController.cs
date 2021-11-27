@@ -28,7 +28,7 @@ namespace JAPI.Controllers
             }
             return Ok(objDtos);
         }
-        [HttpGet]
+        [HttpGet("{id:int}")]
         public IActionResult GetNationalPark(int id)
         {
             var obj = _npRepo.GetNationalPark(id);
