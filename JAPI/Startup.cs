@@ -56,6 +56,10 @@ namespace JAPI
 
             app.UseHttpsRedirection();
             app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/JumnajiOpenAPISpec/swagger.json", "Jumanji API");
+            });
             app.UseRouting();
 
             app.UseAuthorization();
