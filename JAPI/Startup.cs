@@ -58,10 +58,6 @@ namespace JAPI
                             Url = new Uri("https://opensource.org/licenses/MIT")
                         }
                     });
-
-                var xmlCommentFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var cmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentFile);
-                options.IncludeXmlComments(cmlCommentsFullPath);
             });
             services.AddControllers();
         }
