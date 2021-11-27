@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JAPI", "JAPI\JAPI.csproj", "{B0B080E0-98ED-460E-A57D-D397A0C4CA2A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JAPI", "JAPI\JAPI.csproj", "{CD5FFAD6-87A0-47C4-80F7-9D0F61C5E819}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B0B080E0-98ED-460E-A57D-D397A0C4CA2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B0B080E0-98ED-460E-A57D-D397A0C4CA2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B0B080E0-98ED-460E-A57D-D397A0C4CA2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B0B080E0-98ED-460E-A57D-D397A0C4CA2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD5FFAD6-87A0-47C4-80F7-9D0F61C5E819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD5FFAD6-87A0-47C4-80F7-9D0F61C5E819}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD5FFAD6-87A0-47C4-80F7-9D0F61C5E819}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD5FFAD6-87A0-47C4-80F7-9D0F61C5E819}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
