@@ -29,7 +29,7 @@ namespace JAPI.Controllers
             }
             return Ok(objDtos);
         }
-        [HttpGet("{id:int}")]
+        [HttpGet("{id:int}", Name = "GetNationalPark")]
         public IActionResult GetNationalPark(int id)
         {
             var obj = _npRepo.GetNationalPark(id);
@@ -59,10 +59,10 @@ namespace JAPI.Controllers
             var nationalParkObj = _mapper.Map<NationalPark>(nationalParkDto);
             if (!_npRepo.CreateNationalPark(nationalParkObj))
             {
-                ModelState.AddModelError("", $"Something went wrong when saving the record {nationalParkDto.Name}");
+                ModelState.AddModelError("", $"Something went wrong when saving the record {nationalParkObj.Name}");
                 return StatusCode(500, ModelState);
             }
-            return Ok();
+            return CreatedAtRoute("GetNationalPark", new { id = nationalParkObj.Id }, nationalParkObj);
         }
     }
 }
