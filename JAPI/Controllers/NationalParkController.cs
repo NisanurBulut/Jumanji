@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using JAPI.Models;
 using JAPI.Models.Dtos;
 using JAPI.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
@@ -39,6 +40,29 @@ namespace JAPI.Controllers
 
             return Ok(_mapper.Map<NationalParkDto>(obj));
         }
-
+        [HttpPost]
+        public IActionResult CreateNationalPark([FromBody] NationalParkDto nationalParkDto)
+        {
+            if (nationalParkDto == null)
+            {
+                return BadRequest(ModelState);
+            }
+            if (_npRepo.NationalParkExists(nationalParkDto.Name))
+            {
+                ModelState.AddModelError("", "National Park Exists!");
+                return StatusCode(404, ModelState);
+            }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var nationalParkObj = _mapper.Map<NationalPark>(nationalParkDto);
+            if (!_npRepo.CreateNationalPark(nationalParkObj))
+            {
+                ModelState.AddModelError("", $"Something went wrong when saving the record {nationalParkDto.Name}");
+                return StatusCode(500, ModelState);
+            }
+            return Ok();
+        }
     }
 }
