@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace JClient.Repository.IRepository
+namespace JClient.Repository
 {
     public interface IRepository<T> where T : class
     {
