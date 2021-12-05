@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace JAPI.Controllers
 {
-    [Route("api/NationalParks")]
+    [Route("api/nationalpark")]
     [ApiController]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public class NationalParkController : ControllerBase
