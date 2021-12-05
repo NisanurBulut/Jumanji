@@ -47,6 +47,25 @@ namespace JAPI.Controllers
 
             return Ok(_mapper.Map<TrailDto>(obj));
         }
+        [HttpGet("[action]/{nationalParkId:int}")]
+        [ProducesResponseType(200, Type = typeof(TrailDto))]
+        [ProducesResponseType(404)]
+        [ProducesDefaultResponseType]
+        public IActionResult GetTrailInNationalPark(int nationalParkId)
+        {
+            var objList = _trRepo.GetTrailsInNationalPark(nationalParkId);
+            if (objList == null)
+            {
+                return NotFound();
+            }
+            var objDtos = new List<TrailDto>();
+            foreach (var obj in objList)
+            {
+                var objDto = _mapper.Map<TrailDto>(obj);
+                objDtos.Add(objDto);
+            }
+            return Ok(objDtos);
+        }
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(TrailDto))]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -81,7 +100,7 @@ namespace JAPI.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult UpdateTrail(int id, [FromBody] TrailUpdateDto trailDto)
         {
-            if (trailDto == null || id!=trailDto.Id)
+            if (trailDto == null || id != trailDto.Id)
             {
                 return BadRequest(ModelState);
             }
@@ -102,7 +121,7 @@ namespace JAPI.Controllers
         {
             if (!_trRepo.TrailExists(id))
             {
-               return NotFound();
+                return NotFound();
             }
             var trailObj = _trRepo.GetTrail(id);
             if (!_trRepo.DeleteTrail(trailObj))
